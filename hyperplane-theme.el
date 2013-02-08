@@ -36,8 +36,6 @@
 
 
 
-(defface hl-line-face `((t (:inherit default))) "Spec")
-
 (deftheme hyperplane "Hyperplane translated")
 
 (setq hp-background+4 "#464F56")
@@ -115,8 +113,11 @@
  ;;              :foreground ,hp-foreground))
  ;;            ;; (t (:foreground "white"))
  ;;            ))
+
  `(default ((((type tty) (class color))
-             (:background "blue" :foreground "white"))
+             (:background
+              "unspecified-bg"
+              :foreground "white"))
             (((type tty) (class mono))
              (:inverse-video t))
             (t
@@ -135,13 +136,14 @@
 
  `(fringe
    ((t (:background
-        ,hp-background
+        ,hp-background-2
         :foreground ,hp-comment))))
 
  `(linum
    ((t (:background
-        ,hp-background
-        :foreground ,hp-background+4
+        ,hp-background-2
+        :foreground
+        ,hp-background+4
         :weight normal
         :italic nil
         :underline nil
@@ -151,7 +153,9 @@
    ((t (:background ,hp-dark-gray :foreground ,hp-background-4))))
 
  `(highlight
-   ((t (:background ,hp-background+4 :foreground ,hp-white))))
+   ((t (:foreground ,hp-white))))
+ ;; (margin
+ ;;  ((t (:foreground ,hp-white))))
 
  `(mode-line
    ((t (:background
@@ -172,10 +176,10 @@
         ,hp-background+4
         :foreground ,hp-dark-gray
         ;; :family "DejaVu Sans"
-        :box (:line-width
-              1
-              :color
-              ,hp-background-4)
+        ;; :box (:line-width
+        ;;       1
+        ;;       :color
+        ;;       ,hp-background-4)
         ))))
 
  `(header-line-inactive ((t (:background ,hp-background :foreground ,hp-background+4))))
@@ -187,7 +191,7 @@
  ;;   ((t (:background ,hp-background-4 :foreground ,hp-dark-gray))))
 
  `(mode-line-buffer-id ((t (:foreground ,hp-orange :weight bold))))
-;;; Tabbar
+ ;; Tabbar
  `(default
    ((t (:foreground ,hp-foreground :background ,hp-background))))
 
@@ -297,7 +301,7 @@
    ((t (:inherit font-lock-variable-name-face))))
  ;; (diredp-ignored-file-name
  ;;  ((t (:foreground "#bebebe"))))
- `(diredp-flag-mark-line ((t (:inherit default))))
+ ;; `(diredp-flag-mark-line ((t (:inherit default))))
  `(diredp-exec-priv ((t (:inherit default))))
  `(diredp-file-name ((t (:inherit default))))
  `(diredp-inode+size ((t (:inherit default))))
@@ -413,13 +417,13 @@
  ;; --------
  ;; calendar
  ;; --------
- `(calendar-today-face
+ `(calendar-today
    ((t (:foreground ,hp-green :bold t))))
 
- `(holiday-face
+ `(holiday
    ((t (:foreground ,hp-orange))))
 
- `(diary-face
+ `(diary
    ((t (:foreground ,hp-purple))))
 
  ;; ---
@@ -461,7 +465,55 @@
    ((t (:foreground ,hp-purple))))
  `(term-color-white
    ((t (:foreground ,hp-white))))
- )
+ ;; Dumped from custom.el
+ '(dired-async-in-process-face
+   ((t (:background "tomato"))))
+ '(diredp-flag-mark
+   ((t (:foreground "Orange" :weight bold))))
+ '(diredp-flag-mark-line
+   ((t (:weight bold))))
+ '(emms-browser-album-face
+   ((t (:inherit font-lock-function-name-face :slant italic :weight bold :height 1.2 :family "Georgia"))))
+ '(emms-browser-artist-face
+   ((t (:inherit org-level-1 :foreground "#cc6e51" :family "DejaVu Sans"))))
+ '(emms-browser-track-face
+   ((t (:inherit default :family "DejaVu Sans"))))
+ '(emms-browser-year/genre-face
+   ((t (:foreground "#3ab145" :weight bold :family "DejaVu Sans"))))
+ '(emms-playlist-selected-face
+   ((t (:inherit font-lock-function-name-face :weight normal :family "DejaVu Sans"))))
+ '(emms-playlist-track-face
+   ((t (:family "DejaVu Sans"))))
+ '(hl-line
+   ((t (:background "#767790" :foreground "#3a3f46"))))
+ '(magit-item-highlight
+   ((t (:foreground "white"))))
+ '(mu4e-header-highlight-face
+   ((t (:inherit hl-line))))
+ '(newsticker-treeview-face
+   ((t nil)))
+ '(newsticker-treeview-new-face
+   ((t (:inherit newsticker-treeview-face :foreground "skyblue" :weight bold))))
+ '(newsticker-treeview-old-face
+   ((t (:inherit default))))
+ '(newsticker-treeview-selection-face
+   ((t (:background "navy"))))
+ '(org-date
+   ((t (:foreground "Cyan" :weight bold))))
+ '(speedbar-file-face
+   ((t nil)))
+ '(speedbar-selected-face
+   ((t (:inherit font-lock-function-name-face))))
+ '(table-cell
+   ((t (:foreground "thistle"))))
+ '(variable-pitch
+   ((t (:family "Georgia"))))
+ `(git-gutter-fr:added
+   ((t (:foreground ,hp-green))))
+ `(git-gutter-fr:modified
+   ((t (:foreground ,hp-purple))))
+ `(git-gutter-fr:deleted
+   ((t (:foreground ,hp-red)))))
 
 (provide 'hyperplane-theme)
 
