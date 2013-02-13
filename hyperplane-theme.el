@@ -136,12 +136,12 @@
 
  `(fringe
    ((t (:background
-        ,hp-background-2
+        ,hp-background
         :foreground ,hp-comment))))
 
  `(linum
    ((t (:background
-        ,hp-background-2
+        ,hp-background
         :foreground
         ,hp-background+4
         :weight normal
